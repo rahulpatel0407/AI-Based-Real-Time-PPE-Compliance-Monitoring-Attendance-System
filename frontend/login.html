@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOCL Refinery Safety & Operations System – Secure Login</title>
+    <meta name="description" content="Indian Oil Corporation Limited – Refinery Safety & Operations System. Authorized Personnel Access Only.">
+    <link rel="icon" type="image/png" href="assets/logo/iocl.png">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <main class="login-shell" aria-label="Secure Login">
+        <section class="login-card" role="region" aria-labelledby="login-title">
+            <header class="login-header">
+                <img src="assets/logo/iocl.png" alt="Indian Oil Corporation Limited Logo" class="login-logo">
+                <h1 id="login-title">Indian Oil Corporation Limited – Refinery Safety & Operations System</h1>
+                <p class="subtitle">Authorized Personnel Access Only</p>
+            </header>
+
+            <div class="security-indicators">
+                <span><i class="fas fa-lock"></i> Secure Internal Network</span>
+                <span><i class="fas fa-shield-halved"></i> Encrypted Authentication</span>
+                <span><i class="fas fa-helmet-safety"></i> Safety-Critical System</span>
+            </div>
+
+            <form id="loginForm" class="login-form" autocomplete="off" novalidate>
+                <div class="field">
+                    <label for="employeeId">Employee ID / Username</label>
+                    <input type="text" id="employeeId" name="employeeId" required autocomplete="username" inputmode="text">
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+
+                <div class="field">
+                    <label for="role">Role (Optional)</label>
+                    <select id="role" name="role">
+                        <option value="">Select Role</option>
+                        <option value="admin">Administrator</option>
+                        <option value="officer">Safety Officer</option>
+                        <option value="supervisor">Supervisor</option>
+                        <option value="staff">Authorized Staff</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-shield-alt"></i> Secure Login
+                </button>
+
+                <div class="status-area" aria-live="polite">
+                    <div id="login-spinner" class="spinner" aria-hidden="true"></div>
+                    <p id="login-message" class="login-message"></p>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

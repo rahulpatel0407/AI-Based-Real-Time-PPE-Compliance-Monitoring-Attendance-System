@@ -1,0 +1,52 @@
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+
+# IDEs
+.idea/
+.vscode/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+attendance.db
+logs/
+
+# Data outputs
+violations/
+Videos/
+face_db/
+
+# Model checkpoints (use Git LFS if needed)
+*.pt
+*.pth
+*.onnx
+*.h5
+*.ckpt
+*.tflite
+
+# Build outputs
+dist/
+build/

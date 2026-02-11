@@ -1,0 +1,160 @@
+{
+  "app_name": "IOCL Refinery Safety & Attendance System",
+  "version": "2.0.0",
+  "organization": "Indian Oil Corporation Limited",
+  "environment": "production",
+  
+  "backend": {
+    "host": "0.0.0.0",
+    "port": 5000,
+    "debug": false,
+    "reload_on_change": true
+  },
+  
+  "frontend": {
+    "title": "IOCL Refinery Safety Dashboard",
+    "logo": "IOCL",
+    "theme": "dark",
+    "refresh_interval_ms": 5000
+  },
+  
+  "database": {
+    "type": "sqlite",
+    "path": "attendance.db",
+    "backup_path": "backups/"
+  },
+  
+  "safety_thresholds": {
+    "ppe_compliance_min": 90,
+    "response_time_max_minutes": 5,
+    "hazard_alert_critical": 3,
+    "fire_detection_threshold": 0.6
+  },
+  
+  "zones": [
+    {
+      "id": "A",
+      "name": "Processing Unit",
+      "hazard_level": "High",
+      "max_workers": 50
+    },
+    {
+      "id": "B",
+      "name": "Storage Area",
+      "hazard_level": "Medium",
+      "max_workers": 35
+    },
+    {
+      "id": "C",
+      "name": "Furnace Room",
+      "hazard_level": "Critical",
+      "max_workers": 25
+    },
+    {
+      "id": "D",
+      "name": "Control Room",
+      "hazard_level": "Low",
+      "max_workers": 20
+    }
+  ],
+  
+  "cameras": [
+    {
+      "id": "CAM-A1",
+      "zone": "A",
+      "location": "Zone A - Entrance",
+      "stream_url": "http://camera-a1:8080/stream"
+    },
+    {
+      "id": "CAM-B1",
+      "zone": "B",
+      "location": "Zone B - Storage",
+      "stream_url": "http://camera-b1:8080/stream"
+    },
+    {
+      "id": "CAM-C1",
+      "zone": "C",
+      "location": "Zone C - Furnace",
+      "stream_url": "http://camera-c1:8080/stream"
+    }
+  ],
+  
+  "alerts": {
+    "enable_email": true,
+    "enable_sms": false,
+    "enable_sound": true,
+    "email_recipients": [
+      "safety@iocl.in",
+      "admin@iocl.in"
+    ]
+  },
+  
+  "features": {
+    "ppe_detection": true,
+    "fire_detection": true,
+    "face_recognition": true,
+    "attendance_tracking": true,
+    "real_time_alerts": true,
+    "analytics": true
+  },
+
+  "violation_capture": {
+    "enabled": true,
+    "confidence_threshold": 0.45,
+    "model_confidence": 0.25,
+    "model_iou": 0.45,
+    "model_imgsz": 640,
+    "min_overlap_iou": 0.1,
+    "head_ratio": 0.3,
+    "person_confidence_threshold": 0.45,
+    "no_helmet_confidence_threshold": 0.45,
+    "helmet_confidence_threshold": 0.5,
+    "vest_conf_strict": 0.45,
+    "vest_conf_soft": 0.3,
+    "vest_color_coverage_min": 0.12,
+    "vest_torso_top_ratio": 0.25,
+    "vest_torso_bottom_ratio": 0.85,
+    "vest_min_box_area": 300,
+    "no_vest_confidence_threshold": 0.45,
+    "vest_confidence_threshold": 0.45,
+    "color_calibration_path": "calibration/color_calibration.json",
+    "color_thresholds": {
+      "yellow": {"lower": [15, 100, 80], "upper": [40, 255, 255]},
+      "red1": {"lower": [0, 100, 50], "upper": [10, 255, 255]},
+      "red2": {"lower": [170, 100, 50], "upper": [180, 255, 255]}
+    },
+    "debounce_frames": 2,
+    "queue_max": 200,
+    "rate_limit_per_min": 30,
+    "rate_limit_seconds": 60,
+    "save_path": "violations",
+    "camera_id": "CAM-DEFAULT",
+    "retention_days": 30,
+    "overlay_timestamp": true,
+    "max_concurrent_writes": 2,
+    "thumbnail_width": 200,
+    "list_limit": 6,
+    "upload_enabled": false,
+    "upload_endpoint": "",
+    "save_crop": true,
+    "obfuscate_faces": false,
+    "model": "ppe.pt",
+    "track_grid": 60,
+    "track_timeout_sec": 2.0,
+    "track_cooldown_sec": 60.0
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "file": "logs/app.log",
+    "max_size_mb": 100,
+    "backup_count": 5
+  },
+
+  "streaming": {
+    "fps": 20,
+    "jpeg_quality": 75,
+    "placeholder_quality": 85,
+    "min_send_interval": 0.02
+  }
+}

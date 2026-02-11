@@ -1,0 +1,19 @@
+{
+  "id": "CAM-DEMO__violation_20260121_123456_789_demo123",
+  "timestamp": "2026-01-21T12:34:56",
+  "camera_id": "CAM-DEMO",
+  "zone": "Zone A",
+  "filename": "violation_20260121_123456_789_demo123.jpg",
+  "bbox": [120, 80, 220, 320],
+  "confidence": 0.91,
+  "model": "ppe.pt",
+  "frame_number": 12345,
+  "thumbnail": "violation_20260121_123456_789_demo123_thumb.jpg",
+  "image_path": "violations/CAM-DEMO/violation_20260121_123456_789_demo123.jpg",
+  "crop_path": "violations/CAM-DEMO/violation_20260121_123456_789_demo123_crop.jpg",
+  "thumbnail_path": "violations/CAM-DEMO/violation_20260121_123456_789_demo123_thumb.jpg",
+  "detection_id": "demo123",
+  "local_timestamp": "2026-01-21T12:34:56",
+  "missing_ppe": "Helmet",
+  "status": "new"
+}
