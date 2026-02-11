@@ -71,3 +71,9 @@ Using Python 3.11 locally:
 
 - `python -m pip install -r requirements.txt`
 - Fails with missing `torch==1.13.1` and `torchvision==0.14.1` distributions for Python 3.11.
+
+## Resolution
+
+- Run ID: 21903496038
+- Status: success
+- Notes: CI passes with Python 3.10 and `requirements-ci.txt` (includes pytest).

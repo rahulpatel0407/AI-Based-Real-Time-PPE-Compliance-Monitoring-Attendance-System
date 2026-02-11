@@ -26,6 +26,10 @@ The CI workflow originally used Python 3.11, but the pinned torch/torchvision ve
 - Remove deprecated `--no-use-pep517` flag (pip 26+ no longer supports it)
 - Switch CI to `requirements-ci.txt` to avoid optional heavy dependency builds
 - Add pytest to requirements-ci.txt
+
+## Status
+
+CI passes on run 21903496038 after switching to requirements-ci.txt and adding pytest.
 - Added pip caching and explicit test command
 
 ## Local verification
