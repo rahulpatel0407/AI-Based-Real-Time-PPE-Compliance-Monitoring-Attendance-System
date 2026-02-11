@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/rahulpatel0407/AI-Based-Real-Time-PPE-Compliance-Monitoring-Attendance-System/actions/workflows/ci.yml/badge.svg)
 
-CI Status: Runs `python -m pytest tests` on Ubuntu after installing `requirements.txt`.
+CI Status: Runs `python -m pytest tests` on Ubuntu after installing `requirements-ci.txt`.
 
 At its core, a YOLOv8 vision engine detects PPE and personnel in real time, enabling automatic, tamper-resistant attendance. Violations trigger timestamped alerts for quick action, while a clean web dashboard presents live feeds, compliance trends, and exportable audit reports.
 
