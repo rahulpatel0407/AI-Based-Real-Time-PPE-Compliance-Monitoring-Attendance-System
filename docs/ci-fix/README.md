@@ -8,6 +8,7 @@ CI failed during dependency installation because `torch==1.13.1` and `torchvisio
 
 - Raw log archive: docs/ci-fix/ci-run-21902184558.zip
 - Raw log archive: docs/ci-fix/ci-run-21902763253.zip
+- Raw log archive: docs/ci-fix/ci-run-21902886487.zip
 
 ## Root cause
 
@@ -17,6 +18,7 @@ The CI workflow originally used Python 3.11, but the pinned torch/torchvision ve
 
 - Updated workflow to run with Python 3.10
 - Ensure setuptools and wheel are installed before requirements
+- Disable build isolation so `lap` can access `pkg_resources` from setuptools
 - Added pip caching and explicit test command
 
 ## Local verification
