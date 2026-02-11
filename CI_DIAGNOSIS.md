@@ -22,7 +22,6 @@ From the job log:
 Full logs are saved in:
 
 - docs/ci-fix/ci-run-21902184558.zip
-- docs/ci-fix/logs/0_test.txt
 
 ## Local reproduction
 

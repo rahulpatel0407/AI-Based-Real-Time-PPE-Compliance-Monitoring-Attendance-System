@@ -7,7 +7,6 @@ CI failed during dependency installation because `torch==1.13.1` and `torchvisio
 ## Logs
 
 - Raw log archive: docs/ci-fix/ci-run-21902184558.zip
-- Extracted log: docs/ci-fix/logs/0_test.txt
 
 ## Root cause
 
