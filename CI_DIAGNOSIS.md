@@ -32,6 +32,11 @@
 	- Job: test (3.10)
 	- Step: Install dependencies
 	- Exit code: 2
+- Run ID: 21903361112
+	- Workflow: CI
+	- Job: test (3.10)
+	- Step: Run tests
+	- Exit code: 1
 
 ## Error summary
 
@@ -41,6 +46,7 @@
 - Run 21903025360: Same `pkg_resources` failure when building `lap==0.4.0`.
 - Run 21903110605: `pip` no longer accepts `--no-use-pep517` (exit code 2).
 - Run 21903198083: Same `--no-use-pep517` failure (exit code 2).
+- Run 21903361112: `pytest` missing in CI requirements (`No module named pytest`).
 
 ## Evidence
 
@@ -57,6 +63,7 @@ Full logs are saved in:
 - docs/ci-fix/ci-run-21903025360.zip
 - docs/ci-fix/ci-run-21903110605.zip
 - docs/ci-fix/ci-run-21903198083.zip
+- docs/ci-fix/ci-run-21903361112.zip
 
 ## Local reproduction
 
