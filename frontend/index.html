@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOCL Refinery Safety & Attendance System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <i class="fas fa-industry"></i> IOCL Refinery Safety System
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#dashboard" class="nav-link active" data-page="dashboard">Dashboard</a></li>
+                <li><a href="#ppe-compliance" class="nav-link" data-page="ppe-compliance">PPE Compliance</a></li>
+                <li><a href="#attendance" class="nav-link" data-page="attendance">Attendance</a></li>
+                <li><a href="#alerts" class="nav-link" data-page="alerts">Alerts</a></li>
+                <li><a href="#analytics" class="nav-link" data-page="analytics">Analytics</a></li>
+                <li><a href="#iocl-details" class="nav-link" data-page="iocl-details">Contact & Details</a></li>
+            </ul>
+            <div class="user-profile" title="Click to logout">
+                <span class="user-name">Admin</span>
+                <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                <div class="logout-tooltip">Click to logout</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-item active" data-page="dashboard">
+                <a href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
+            </li>
+            <li class="menu-item" data-page="ppe-compliance">
+                <a href="#"><i class="fas fa-hard-hat"></i> PPE Compliance</a>
+            </li>
+            <li class="menu-item" data-page="attendance">
+                <a href="#"><i class="fas fa-calendar-check"></i> Attendance</a>
+            </li>
+            <li class="menu-item" data-page="alerts">
+                <a href="#"><i class="fas fa-exclamation-triangle"></i> Alerts & Incidents</a>
+            </li>
+            <li class="menu-item" data-page="analytics">
+                <a href="#"><i class="fas fa-chart-bar"></i> Analytics</a>
+            </li>
+            <li class="menu-item" data-page="iocl-details">
+                <a href="#"><i class="fas fa-address-card"></i> Contact & Details</a>
+            </li>
+            <li class="menu-item" data-page="settings">
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page active">
+            <div class="page-header">
+                <h1>Refinery Safety Dashboard</h1>
+                <p>Real-time monitoring and safety metrics</p>
+            </div>
+
+            <!-- Status Cards -->
+            <div class="status-cards">
+                <div class="card status-card green">
+                    <div class="card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Overall Safety Status</h3>
+                        <p class="status-value">OPERATIONAL</p>
+                    </div>
+                </div>
+
+                <div class="card status-card yellow">
+                    <div class="card-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>PPE Compliance</h3>
+                        <p class="status-value" id="ppe-status">94%</p>
+                    </div>
+                </div>
+
+                <div class="card status-card blue">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Active Workers</h3>
+                        <p class="status-value" id="active-workers">247</p>
+                    </div>
+                </div>
+
+                <div class="card status-card red">
+                    <div class="card-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Hazard Alerts</h3>
+                        <p class="status-value" id="hazard-alerts">2</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Metrics -->
+            <div class="metrics-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Real-time Monitoring</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="metric-item">
+                            <span class="metric-label">Temperature</span>
+                            <span class="metric-value">35°C</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Air Quality</span>
+                            <span class="metric-value">Good</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Fire Risk</span>
+                            <span class="metric-value low-risk">Low</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Live Camera Feed <span class="live-indicator">● LIVE</span></h3>
+                    </div>
+                    <div class="camera-feed">
+                        <!-- MJPEG Stream - Direct multipart/x-mixed-replace -->
+                        <img id="video-stream" src="" alt="Live Camera Feed" style="width: 100%; height: auto; display: none; background: #000; border-radius: 8px;">
+                        <div id="camera-placeholder" class="camera-placeholder">
+                            <i class="fas fa-video"></i>
+                            <p>Loading Camera Feed - Zone A</p>
+                            <p class="camera-hint">Real-time with AI detection (PPE, Fire)</p>
+                            <span class="live-badge">LIVE</span>
+                        </div>
+                    </div>
+                    <div class="camera-controls">
+                        <button class="btn-small" onclick="toggleCamera()">Toggle Feed</button>
+                        <button class="btn-small" onclick="captureFrame()">Capture Frame</button>
+                        <span id="stream-status" class="stream-status">Initializing...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Camera Control Panel -->
+            <div class="card">
+                <div class="card-header header-with-toolbar">
+                    <h3>Camera Control Panel</h3>
+                    <div class="toolbar">
+                        <button id="add-camera-btn" class="btn-primary" aria-haspopup="dialog" aria-controls="camera-modal">
+                            <i class="fas fa-plus"></i>
+                            Add External Camera
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="camera-list" class="camera-list" aria-live="polite">
+                        <div class="camera-empty">No cameras added yet.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Incident Log -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Recent Incidents & Alerts</h3>
+                </div>
+                <div class="card-body">
+                    <table class="incidents-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Incident Type</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="incidents-tbody">
+                            <tr>
+                                <td>14:45</td>
+                                <td>No PPE Detected</td>
+                                <td>Zone B - Storage</td>
+                                <td><span class="status-badge warning">Pending</span></td>
+                                <td><button class="btn-small">Review</button></td>
+                            </tr>
+                            <tr>
+                                <td>14:15</td>
+                                <td>Fire Alert</td>
+                                <td>Zone A - Processing</td>
+                                <td><span class="status-badge danger">Critical</span></td>
+                                <td><button class="btn-small">Emergency</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PPE Compliance Page -->
+        <div id="ppe-compliance" class="page">
+            <div class="page-header">
+                <h1>PPE Compliance Monitoring</h1>
+                <p>Track personal protective equipment usage across zones</p>
+            </div>
+
+            <div class="filters">
+                <select id="zone-filter">
+                    <option value="">All Zones</option>
+                    <option value="A">Zone A</option>
+                    <option value="B">Zone B</option>
+                    <option value="C">Zone C</option>
+                </select>
+                <input type="date" id="date-filter">
+            </div>
+
+            <div class="metrics-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>PPE Status Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span>Helmets</span>
+                                <span>96%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 96%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span>Safety Vests</span>
+                                <span>94%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 94%"></div>
+                                <td>Helmet</td>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                                <td>Safety Vest</td>
+                        <h3>Non-Compliant Workers</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="workers-table">
+                            <thead>
+                                <tr>
+                                    <th>Worker ID</th>
+                                    <th>Name</th>
+                                    <th>Missing PPE</th>
+                                    <th>Alerts</th>
+                                </tr>
+                            </thead>
+                            <tbody id="non-compliant-tbody">
+                                <tr>
+                                    <td>EMP001</td>
+                                    <td>Raj Kumar</td>
+                                    <td>Helmet</td>
+                                    <td><span class="badge-warning">3</span></td>
+                                </tr>
+                                <tr>
+                                    <td>EMP002</td>
+                                    <td>Priya Singh</td>
+                                    <td>Safety Vest</td>
+                                    <td><span class="badge-danger">1</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance Page -->
+        <div id="attendance" class="page">
+            <div class="page-header">
+                <h1>Attendance & Face Recognition</h1>
+                <p>Real-time employee attendance tracking</p>
+            </div>
+
+            <div class="filters">
+                <input type="date" id="attendance-date" value="">
+                <select id="department-filter">
+                    <option value="">All Departments</option>
+                    <option value="operations">Operations</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="safety">Safety</option>
+                </select>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="card status-card green">
+                    <div class="card-icon"><i class="fas fa-check"></i></div>
+                    <div class="card-content">
+                        <h3>Present</h3>
+                        <p class="status-value" id="present-count">234</p>
+                    </div>
+                </div>
+                <div class="card status-card red">
+                    <div class="card-icon"><i class="fas fa-times"></i></div>
+                    <div class="card-content">
+                        <h3>Absent</h3>
+                        <p class="status-value" id="absent-count">13</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Attendance Records</h3>
+                </div>
+                <div class="card-body">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Name</th>
+                                <th>Check-In</th>
+                                <th>Check-Out</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendance-tbody">
+                            <tr>
+                                <td>EMP234</td>
+                                <td>Anil Verma</td>
+                                <td>08:15</td>
+                                <td>16:45</td>
+                                <td><span class="status-badge success">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>EMP235</td>
+                                <td>Neha Sharma</td>
+                                <td>08:02</td>
+                                <td>-</td>
+                                <td><span class="status-badge info">In Progress</span></td>
+                            </tr>
+                            <tr>
+                                <td>EMP236</td>
+                                <td>Suresh Patel</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="status-badge danger">Absent</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Page -->
+        <div id="alerts" class="page">
+            <div class="page-header">
+                <h1>Safety Alerts & Incidents</h1>
+                <p>Real-time emergency alerts and incident tracking</p>
+            </div>
+
+            <div class="alert-box critical">
+                <div class="alert-icon"><i class="fas fa-fire"></i></div>
+                <div class="alert-content">
+                    <h4>FIRE DETECTED - ZONE C</h4>
+                    <p>Automatic fire suppression system activated. Emergency services notified.</p>
+                    <span class="timestamp">Time: 14:15 | Duration: 2 mins</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>All Alerts History</h3>
+                </div>
+                <div class="card-body">
+                    <table class="alerts-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Alert Type</th>
+                                <th>Location</th>
+                                <th>Severity</th>
+                                <th>Response Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="alerts-tbody">
+                            <tr>
+                                <td>14:15</td>
+                                <td>Fire Detection</td>
+                                <td>Zone C</td>
+                                <td><span class="severity-critical">Critical</span></td>
+                                <td>2 min</td>
+                                <td><span class="status-badge success">Resolved</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics" class="page">
+            <div class="page-header">
+                <h1>Safety Analytics & Reports</h1>
+                <p>Comprehensive safety metrics and trends</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Incidents This Month</h3>
+                    </div>
+                    <div class="card-body chart-container">
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-line"></i> Chart View
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>PPE Compliance Trend</h3>
+                    </div>
+                    <div class="card-body chart-container">
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-area"></i> Chart View
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Monthly Report</h3>
+                </div>
+                <div class="card-body">
+                    <div class="report-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Incidents</span>
+                            <span class="stat-value">12</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Resolved</span>
+                            <span class="stat-value">11</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Avg Response Time</span>
+                            <span class="stat-value">4.5 min</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Safety Score</span>
+                            <span class="stat-value">94/100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IOCL Contact & Details Page -->
+        <div id="iocl-details" class="page">
+            <div class="page-header">
+                <h1>IOCL Guwahati Refinery – Contact & Details</h1>
+                <p>Official contact information and refinery overview</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>IOCL Guwahati Refinery – Contact Information</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Indian Oil Corporation Limited – Guwahati Refinery</strong></p>
+                    <p><i class="fas fa-map-marker-alt"></i> IOCL Guwahati Refinery, Noonmati, Guwahati – 781020, Assam, India</p>
+                    <p><i class="fas fa-phone"></i> +91 361 255 0604</p>
+                    <p><i class="fas fa-envelope"></i> contact@indianoil.in</p>
+                    <p><i class="fas fa-globe"></i> <a href="https://www.iocl.com" target="_blank" rel="noopener noreferrer">https://www.iocl.com</a></p>
+
+                    <p>
+                        <strong>About the Refinery:</strong><br>
+                        The IOCL Guwahati Refinery is one of Indian Oil’s key refineries and the first public sector refinery in India. It plays a vital role in processing crude oil and supplying petroleum products to the northeastern states of India.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add External Camera Modal -->
+    <div id="camera-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="camera-modal-title" aria-hidden="true">
+        <div class="modal-overlay" data-close="true"></div>
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <h2 id="camera-modal-title">Add External Camera</h2>
+                <button type="button" class="icon-button" id="camera-modal-close" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="camera-form" class="modal-body" novalidate>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="camera-name">Camera Name <span class="required">*</span></label>
+                        <input type="text" id="camera-name" name="cameraName" required autocomplete="off" placeholder="e.g., Gate 3 - Loading Dock">
+                    </div>
+                    <div class="form-group">
+                        <label for="camera-type">Camera Type</label>
+                        <select id="camera-type" name="cameraType">
+                            <option value="local">Local Camera (Browser)</option>
+                            <option value="external" selected>External Network Camera</option>
+                        </select>
+                    </div>
+                    <div class="form-group external-field">
+                        <label for="camera-stream-url">Stream URL <span class="required">*</span></label>
+                        <input type="url" id="camera-stream-url" name="streamUrl" placeholder="rtsp:// or https://">
+                    </div>
+                    <div class="form-group external-field">
+                        <label for="camera-snapshot-url">Snapshot URL <span class="optional">(optional)</span></label>
+                        <input type="url" id="camera-snapshot-url" name="snapshotUrl" placeholder="https://camera/snapshot.jpg">
+                    </div>
+                    <div class="form-group external-field">
+                        <label for="camera-username">Username <span class="optional">(optional)</span></label>
+                        <input type="text" id="camera-username" name="username" autocomplete="off">
+                    </div>
+                    <div class="form-group external-field">
+                        <label for="camera-password">Password <span class="optional">(optional)</span></label>
+                        <input type="password" id="camera-password" name="password" autocomplete="new-password">
+                    </div>
+                    <div class="form-group">
+                        <label for="camera-location">Location / Description <span class="optional">(optional)</span></label>
+                        <input type="text" id="camera-location" name="location" autocomplete="off" placeholder="Zone A - North Gate">
+                    </div>
+                </div>
+
+                <div class="preview-panel">
+                    <div class="preview-header">
+                        <h4>Live Preview</h4>
+                        <span id="camera-preview-status" class="preview-status">Awaiting test...</span>
+                    </div>
+                    <div class="preview-body">
+                        <video id="camera-preview-video" class="preview-media" playsinline muted></video>
+                        <img id="camera-preview-image" class="preview-media" alt="Camera preview" />
+                        <div id="camera-preview-placeholder" class="preview-placeholder">
+                            <i class="fas fa-video"></i>
+                            <p>Run a connection test to view preview.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="camera-form-message" class="form-message" role="status" aria-live="polite"></div>
+
+                <div class="modal-actions">
+                    <button type="button" id="camera-test-btn" class="btn-secondary">Test Connection</button>
+                    <div class="action-right">
+                        <button type="submit" class="btn-primary">Save Camera</button>
+                        <button type="button" class="btn-ghost" id="camera-cancel-btn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

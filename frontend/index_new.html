@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Indian Oil Corporation Limited - Refinery Safety & Monitoring System. Real-time PPE compliance, attendance tracking, and safety monitoring.">
+    <meta name="keywords" content="IOCL, Indian Oil, Refinery, Safety, PPE, Monitoring, Attendance">
+    <meta name="author" content="Indian Oil Corporation Limited">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IOCL Refinery Safety & Monitoring System | Indian Oil Corporation Limited</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo/iocl.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style_new.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <img src="assets/logo/iocl.png" alt="Indian Oil Corporation Limited" class="iocl-logo">
+                <div class="brand-text">
+                    <span class="brand-title">Indian Oil Corporation Limited</span>
+                    <span class="brand-subtitle">Refinery Safety & Monitoring System</span>
+                </div>
+            </div>
+            
+            <button class="mobile-toggle" aria-label="Toggle Mobile Menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-menu" role="menubar">
+                <li role="none"><a href="#home" class="nav-link active" data-page="home" role="menuitem"><i class="fas fa-home"></i> Home</a></li>
+                <li role="none"><a href="#dashboard" class="nav-link" data-page="dashboard" role="menuitem"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li role="none"><a href="#ppe-compliance" class="nav-link" data-page="ppe-compliance" role="menuitem"><i class="fas fa-hard-hat"></i> PPE Compliance</a></li>
+                <li role="none"><a href="#attendance" class="nav-link" data-page="attendance" role="menuitem"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+                <li role="none"><a href="#safety" class="nav-link" data-page="safety" role="menuitem"><i class="fas fa-shield-alt"></i> Safety</a></li>
+                <li role="none"><a href="#control-center" class="nav-link" data-page="control-center" role="menuitem"><i class="fas fa-satellite-dish"></i> Control Center</a></li>
+                <li role="none"><a href="#about" class="nav-link" data-page="about" role="menuitem"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+            
+            <div class="user-profile" id="profile-toggle" role="button" tabindex="0" aria-label="User Profile Menu">
+                <span class="user-name" id="navbar-username">Authorized User</span>
+                <div class="profile-avatar">
+                    <img id="profile-avatar-img" src="assets/avatars/default.svg" alt="User Avatar">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Dropdown -->
+    <div class="profile-dropdown" id="profile-dropdown" aria-hidden="true">
+        <div class="profile-header">
+            <img id="profile-preview" src="assets/avatars/default.svg" alt="Profile Picture">
+            <div>
+                <h4 id="profile-name">Authorized User</h4>
+                <p id="profile-role">Role</p>
+                <p id="profile-empid">EMP0000</p>
+            </div>
+        </div>
+
+        <div class="profile-body">
+            <p><strong>Department:</strong> <span id="profile-dept">Operations</span></p>
+            <p><strong>Last Login:</strong> <span id="profile-lastlogin">—</span></p>
+
+            <input type="file" id="avatar-upload" accept=".jpg,.jpeg,.png">
+            <button class="btn btn-primary btn-sm" id="save-avatar">Update Profile Picture</button>
+            <button class="btn btn-secondary btn-sm" id="change-password">Change Password</button>
+            <button class="btn btn-danger btn-sm" id="logout-btn">Secure Logout</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">Powering India's Growth with Safety Excellence</h1>
+                    <p class="hero-subtitle">Advanced AI-powered safety monitoring and compliance system for IOCL refineries</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Monitoring</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">Uptime</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Employees</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Overview -->
+            <div class="features-section">
+                <div class="section-header">
+                    <h2>Comprehensive Safety Solutions</h2>
+                    <p>Integrated safety monitoring and compliance management system</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Real-time Monitoring</h3>
+                        <p>AI-powered video surveillance with instant PPE detection and hazard identification</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3>PPE Compliance</h3>
+                        <p>Automated tracking of personal protective equipment usage across all zones</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-face-smile"></i>
+                        </div>
+                        <h3>Face Recognition</h3>
+                        <p>Advanced facial recognition for attendance and access control management</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-fire-extinguisher"></i>
+                        </div>
+                        <h3>Fire Detection</h3>
+                        <p>Early warning system for fire with automatic alert notifications</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Analytics & Reports</h3>
+                        <p>Comprehensive safety analytics with customizable reporting dashboard</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Instant Alerts</h3>
+                        <p>Real-time notifications for safety violations and emergency situations</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operations Overview -->
+            <div class="operations-section">
+                <div class="section-header">
+                    <h2>Refinery Operations</h2>
+                    <p>State-of-the-art refinery operations ensuring safety and efficiency</p>
+                </div>
+                
+                <div class="operations-grid">
+                    <div class="operation-card">
+                        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=400&h=300&fit=crop" alt="Crude Oil Processing" loading="lazy">
+                        <div class="operation-content">
+                            <h3>Crude Oil Processing</h3>
+                            <p>Advanced distillation and processing units with real-time safety monitoring</p>
+                        </div>
+                    </div>
+                    
+                    <div class="operation-card">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=400&h=300&fit=crop" alt="Quality Control" loading="lazy">
+                        <div class="operation-content">
+                            <h3>Quality Control</h3>
+                            <p>Stringent quality assurance protocols meeting international standards</p>
+                        </div>
+                    </div>
+                    
+                    <div class="operation-card">
+                        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=400&h=300&fit=crop" alt="Storage & Distribution" loading="lazy">
+                        <div class="operation-content">
+                            <h3>Storage & Distribution</h3>
+                            <p>Safe storage facilities with automated inventory management systems</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Control Center & Support Page -->
+        <section id="control-center" class="page">
+            <div class="page-header">
+                <h1>Control Center &amp; Support</h1>
+                <p>Operational command interface for refinery safety systems, surveillance, and incident response.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Refinery Identification &amp; Overview</h3>
+                    <p><strong>Indian Oil Corporation Limited – Guwahati Refinery</strong></p>
+                    <p>IOCL Guwahati Refinery, Noonmati, Guwahati – 781020, Assam, India</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <h3>Emergency Contact Details</h3>
+                    <p><i class="fas fa-phone"></i> +91 361 255 0604</p>
+                    <p><i class="fas fa-envelope"></i> contact@indianoil.in</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Technical Support &amp; Operations Hotlines</h3>
+                    <p>Service requests are tracked through IOCL operational workflows and authorized support channels.</p>
+                    <p><i class="fas fa-globe"></i> <a href="https://www.iocl.com" target="_blank" rel="noopener noreferrer">https://www.iocl.com</a></p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>System Status Indicator</h3>
+                    <p>
+                        <span class="status-indicator" id="system-status-indicator"></span>
+                        <span id="system-status-text">Offline</span>
+                    </p>
+                    <p>Control center services are monitored with continuous health checks and audit logs.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 16px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-camera"></i> Surveillance &amp; Camera Control Panel</h3>
+                </div>
+                <div class="card-body">
+                    <div class="camera-toggle" role="group" aria-label="Live Surveillance Camera">
+                        <div class="toggle-label">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Live Surveillance Camera</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="camera-toggle" aria-label="Live Surveillance Camera">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <div class="toggle-status">
+                               <span class="status-indicator camera-status-indicator"></span>
+                               <span class="camera-status-text">OFFLINE</span>
+                        </div>
+                        <div class="toggle-note">⚠️ Camera access is logged and monitored for security compliance.</div>
+                    </div>
+
+                    <div class="card" style="margin-top: 16px;">
+                        <div class="card-header header-with-toolbar">
+                            <h4><i class="fas fa-clipboard-list"></i> Camera Access History</h4>
+                            <div class="toolbar">
+                                <button id="camera-history-clear" class="btn btn-outline btn-sm" type="button" aria-label="Clear camera access history">
+                                    <i class="fas fa-trash"></i> Clear
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul id="camera-history" class="values-list">
+                                <li><i class="fas fa-circle"></i> No actions logged yet.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>History &amp; Significance of IOCL and Guwahati Refinery</h2>
+                <p>Indian Oil Corporation Limited (IOCL) is India’s largest government-owned oil &amp; gas enterprise, operating across refining, pipelines, fuel marketing, and petrochemicals. The Guwahati Refinery serves as a critical energy hub for the Northeast, supporting civilian infrastructure and strategic mobility.</p>
+
+                <ul class="values-list">
+                    <li><i class="fas fa-check-circle"></i> Commissioned on January 1, 1962 as India’s first public sector refinery.</li>
+                    <li><i class="fas fa-check-circle"></i> Established with international collaboration and inaugurated by national leadership.</li>
+                    <li><i class="fas fa-check-circle"></i> Produces LPG, petrol (MS), diesel (HSD), kerosene, and other fuels for regional demand.</li>
+                    <li><i class="fas fa-check-circle"></i> Strengthens regional energy security and reduces dependence on imported fuels.</li>
+                    <li><i class="fas fa-check-circle"></i> Supports national defense logistics by ensuring reliable fuel availability for operations and training.</li>
+                </ul>
+
+                <h3>Major Milestones &amp; Technology Expansions</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-calendar-day"></i></div>
+                        <h4>1962</h4>
+                        <p>Refinery commissioning and start of operations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-microchip"></i></div>
+                        <h4>Modernization</h4>
+                        <p>Process control upgrades and automated safety instrumentation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-industry"></i></div>
+                        <h4>Capacity Enhancements</h4>
+                        <p>Incremental expansions to improve throughput and product slate.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+        <section id="dashboard" class="page">
+            <div class="page-header">
+                <h1>Safety Monitoring Dashboard</h1>
+                <p>Real-time safety metrics and operational status</p>
+            </div>
+
+            <!-- Status Cards -->
+            <div class="status-grid">
+                <div class="status-card operational">
+                    <div class="card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Safety Status</h3>
+                        <p class="status-value">OPERATIONAL</p>
+                        <span class="status-indicator active"></span>
+                    </div>
+                </div>
+
+                <div class="status-card ppe">
+                    <div class="card-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>PPE Compliance</h3>
+                        <p class="status-value" id="ppe-status">94.2%</p>
+                        <span class="status-trend">↑ 2.1%</span>
+                    </div>
+                </div>
+
+                <div class="status-card workers">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Active Workers</h3>
+                        <p class="status-value" id="active-workers">247</p>
+                        <span class="status-trend">Current shift</span>
+                    </div>
+                </div>
+
+                <div class="status-card alerts">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Active Alerts</h3>
+                        <p class="status-value" id="hazard-alerts">2</p>
+                        <span class="status-trend">Pending review</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitoring Grid -->
+            <div class="monitoring-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-video"></i> Live Camera Feed</h3>
+                        <span class="live-badge">● LIVE</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="camera-feed">
+                            <img id="video-stream" src="" alt="Live Camera Feed" style="display: none;" loading="lazy">
+                            <div id="camera-placeholder" class="camera-placeholder">
+                                <i class="fas fa-camera"></i>
+                                <p>Zone A - Processing Unit</p>
+                                <p class="camera-hint">AI-powered PPE & Fire Detection</p>
+                            </div>
+                        </div>
+                        <div class="camera-controls">
+                            <div class="camera-toggle camera-toggle--readonly" role="group" aria-label="Live Surveillance Camera Status">
+                                <div class="toggle-label">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Live Surveillance Camera</span>
+                                </div>
+                                <div class="toggle-status">
+                                        <span class="status-indicator camera-status-indicator"></span>
+                                        <span class="camera-status-text">OFFLINE</span>
+                                </div>
+                                <div class="toggle-note">⚠️ Camera access is logged and monitored for security compliance.</div>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="captureFrame()" aria-label="Capture Frame">
+                                <i class="fas fa-camera"></i> Capture
+                            </button>
+                            <span id="stream-status" class="stream-status">Initializing...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tachometer-alt"></i> Environmental Metrics</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="metrics-list">
+                            <div class="metric-item">
+                                <div class="metric-icon temp">
+                                    <i class="fas fa-thermometer-half"></i>
+                                </div>
+                                <div class="metric-details">
+                                    <span class="metric-label">Temperature</span>
+                                    <span class="metric-value">35°C</span>
+                                </div>
+                                <div class="metric-status normal">Normal</div>
+                            </div>
+                            
+                            <div class="metric-item">
+                                <div class="metric-icon air">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <div class="metric-details">
+                                    <span class="metric-label">Air Quality Index</span>
+                                    <span class="metric-value">Good</span>
+                                </div>
+                                <div class="metric-status normal">Normal</div>
+                            </div>
+                            
+                            <div class="metric-item">
+                                <div class="metric-icon fire">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                                <div class="metric-details">
+                                    <span class="metric-label">Fire Risk Level</span>
+                                    <span class="metric-value">Low</span>
+                                </div>
+                                <div class="metric-status low">Low</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Incidents Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-clipboard-list"></i> Recent Incidents & Alerts</h3>
+                    <button class="btn btn-outline btn-sm">View All</button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="data-table" role="table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Incident Type</th>
+                                    <th>Location</th>
+                                    <th>Severity</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="incidents-tbody">
+                                <tr>
+                                    <td>14:45</td>
+                                    <td><i class="fas fa-hard-hat"></i> PPE Violation</td>
+                                    <td>Zone B - Storage</td>
+                                    <td><span class="badge badge-warning">Medium</span></td>
+                                    <td><span class="badge badge-info">Pending</span></td>
+                                    <td><button class="btn btn-sm btn-primary">Review</button></td>
+                                </tr>
+                                <tr>
+                                    <td>14:15</td>
+                                    <td><i class="fas fa-fire"></i> Fire Alert</td>
+                                    <td>Zone A - Processing</td>
+                                    <td><span class="badge badge-danger">Critical</span></td>
+                                    <td><span class="badge badge-success">Resolved</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">Details</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PPE Compliance Page -->
+        <section id="ppe-compliance" class="page">
+            <div class="page-header">
+                <h1>PPE Compliance Monitoring</h1>
+                <p>Personal protective equipment usage tracking across all zones</p>
+            </div>
+
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label for="zone-filter">Zone</label>
+                    <select id="zone-filter" class="filter-select">
+                        <option value="">All Zones</option>
+                        <option value="A">Zone A - Processing</option>
+                        <option value="B">Zone B - Storage</option>
+                        <option value="C">Zone C - Distribution</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="date-filter">Date</label>
+                    <input type="date" id="date-filter" class="filter-input">
+                </div>
+                <button class="btn btn-primary">Apply Filters</button>
+            </div>
+
+            <div class="monitoring-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> PPE Compliance Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-list">
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span><i class="fas fa-hard-hat"></i> Safety Helmets</span>
+                                    <span class="progress-value">96.8%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 96.8%" data-value="96.8"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span><i class="fas fa-vest"></i> Safety Vests</span>
+                                    <span class="progress-value">94.2%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 94.2%" data-value="94.2"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span><i class="fas fa-shoe-prints"></i> Safety Boots</span>
+                                    <span class="progress-value">98.1%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 98.1%" data-value="98.1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-times"></i> Non-Compliant Workers</h3>
+                        <span class="badge badge-warning">6 Active</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table compact">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Missing PPE</th>
+                                        <th>Violations</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="non-compliant-tbody">
+                                    <tr>
+                                        <td>EMP001</td>
+                                        <td>Rajesh Kumar</td>
+                                        <td>Helmet</td>
+                                        <td><span class="badge badge-warning">3</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>EMP042</td>
+                                        <td>Priya Singh</td>
+                                        <td>Safety Vest</td>
+                                        <td><span class="badge badge-danger">5</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card violation-snapshots-card">
+                    <div class="card-header">
+                        <div class="card-title-group">
+                            <h3><i class="fas fa-camera"></i> Violation Snapshots</h3>
+                            <span class="badge badge-info" id="violation-snapshots-count">0</span>
+                        </div>
+                        <button class="icon-button" id="violation-snapshots-filter" aria-label="Filter violations">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="snapshot-grid" id="violation-snapshots-grid" aria-live="polite"></div>
+                        <div class="snapshot-actions">
+                            <button class="btn btn-outline btn-sm" id="violation-snapshots-view-all">View All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="violation-drawer" id="violation-drawer" aria-hidden="true">
+                <div class="drawer-content" role="dialog" aria-modal="true" aria-labelledby="violation-drawer-title">
+                    <div class="drawer-header">
+                        <h3 id="violation-drawer-title">All Violations</h3>
+                        <button class="icon-button" id="violation-drawer-close" aria-label="Close violations list">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="drawer-filters">
+                        <div class="filter-group">
+                            <label for="violation-filter-zone">Zone</label>
+                            <select id="violation-filter-zone" class="filter-select">
+                                <option value="">All Zones</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="violation-filter-camera">Camera</label>
+                            <input type="text" id="violation-filter-camera" class="filter-input" placeholder="Camera ID">
+                        </div>
+                        <div class="filter-group">
+                            <label for="violation-filter-date">Date</label>
+                            <input type="date" id="violation-filter-date" class="filter-input">
+                        </div>
+                        <div class="filter-group">
+                            <label for="violation-filter-status">Status</label>
+                            <select id="violation-filter-status" class="filter-select">
+                                <option value="">All</option>
+                                <option value="new">New</option>
+                                <option value="reviewed">Reviewed</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary btn-sm" id="violation-filter-apply">Apply</button>
+                    </div>
+                    <div class="snapshot-list" id="violation-drawer-list"></div>
+                    <div class="drawer-pagination">
+                        <button class="btn btn-secondary btn-sm" id="violation-prev-page">Previous</button>
+                        <span id="violation-page-indicator">Page 1</span>
+                        <button class="btn btn-secondary btn-sm" id="violation-next-page">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-overlay" id="violation-modal" aria-hidden="true">
+                <div class="modal" role="dialog" aria-modal="true" aria-labelledby="violation-modal-title">
+                    <div class="modal-header">
+                        <h3 id="violation-modal-title">Violation Details</h3>
+                        <button class="icon-button" data-modal-close aria-label="Close details">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-image-wrapper">
+                            <img id="violation-modal-image" alt="Violation snapshot">
+                            <div class="modal-image-overlay" id="violation-modal-timestamp"></div>
+                        </div>
+                        <div class="modal-meta" id="violation-modal-meta"></div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" id="violation-mark-reviewed">Mark Reviewed</button>
+                        <a class="btn btn-outline" id="violation-download" href="#" download>Download</a>
+                        <a class="btn btn-secondary" id="violation-timeline" href="#" target="_blank" rel="noopener noreferrer">Link to Timeline</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attendance Page -->
+        <section id="attendance" class="page">
+            <div class="page-header">
+                <h1>Attendance Management</h1>
+                <p>Face recognition-based attendance tracking system</p>
+            </div>
+
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <label for="attendance-date">Date</label>
+                    <input type="date" id="attendance-date" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label for="department-filter">Department</label>
+                    <select id="department-filter" class="filter-select">
+                        <option value="">All Departments</option>
+                        <option value="operations">Operations</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="safety">Safety & Security</option>
+                        <option value="admin">Administration</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary">Apply Filters</button>
+            </div>
+
+            <div class="status-grid">
+                <div class="status-card success">
+                    <div class="card-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Present</h3>
+                        <p class="status-value" id="present-count">234</p>
+                        <span class="status-trend">95% attendance</span>
+                    </div>
+                </div>
+
+                <div class="status-card danger">
+                    <div class="card-icon">
+                        <i class="fas fa-user-times"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Absent</h3>
+                        <p class="status-value" id="absent-count">13</p>
+                        <span class="status-trend">5% absent</span>
+                    </div>
+                </div>
+
+                <div class="status-card info">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>On Time</h3>
+                        <p class="status-value">218</p>
+                        <span class="status-trend">93% punctuality</span>
+                    </div>
+                </div>
+
+                <div class="status-card warning">
+                    <div class="card-icon">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Late Arrivals</h3>
+                        <p class="status-value">16</p>
+                        <span class="status-trend">7% late</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> Attendance Records</h3>
+                    <button class="btn btn-outline btn-sm">Export Report</button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Check-In</th>
+                                    <th>Check-Out</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-tbody">
+                                <tr>
+                                    <td>EMP234</td>
+                                    <td>Anil Verma</td>
+                                    <td>Operations</td>
+                                    <td>08:15 AM</td>
+                                    <td>04:45 PM</td>
+                                    <td><span class="badge badge-success">Present</span></td>
+                                </tr>
+                                <tr>
+                                    <td>EMP235</td>
+                                    <td>Neha Sharma</td>
+                                    <td>Safety</td>
+                                    <td>08:02 AM</td>
+                                    <td>-</td>
+                                    <td><span class="badge badge-info">In Progress</span></td>
+                                </tr>
+                                <tr>
+                                    <td>EMP236</td>
+                                    <td>Suresh Patel</td>
+                                    <td>Maintenance</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><span class="badge badge-danger">Absent</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety Page -->
+        <section id="safety" class="page">
+            <div class="page-header">
+                <h1>Safety & Sustainability</h1>
+                <p>Committed to maintaining the highest safety standards in the industry</p>
+            </div>
+
+            <div class="content-section">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Our Safety Commitment</h3>
+                        <p>At IOCL, safety is our top priority. We implement world-class safety protocols and continuous monitoring systems to ensure a secure working environment for all employees and stakeholders.</p>
+                    </div>
+                </div>
+
+                <div class="safety-grid">
+                    <div class="safety-card">
+                        <i class="fas fa-hard-hat"></i>
+                        <h4>PPE Requirements</h4>
+                        <ul>
+                            <li>Mandatory safety helmets in all operational zones</li>
+                            <li>High-visibility safety vests</li>
+                            <li>Safety footwear and gloves</li>
+                            <li>Protective equipment in designated areas</li>
+                        </ul>
+                    </div>
+
+                    <div class="safety-card">
+                        <i class="fas fa-fire-extinguisher"></i>
+                        <h4>Emergency Protocols</h4>
+                        <ul>
+                            <li>24/7 fire detection and suppression systems</li>
+                            <li>Emergency evacuation procedures</li>
+                            <li>First aid and medical response teams</li>
+                            <li>Regular safety drills and training</li>
+                        </ul>
+                    </div>
+
+                    <div class="safety-card">
+                        <i class="fas fa-leaf"></i>
+                        <h4>Environmental Care</h4>
+                        <ul>
+                            <li>Zero discharge commitment</li>
+                            <li>Air quality monitoring systems</li>
+                            <li>Waste management and recycling</li>
+                            <li>Energy efficiency initiatives</li>
+                        </ul>
+                    </div>
+
+                    <div class="safety-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Training & Development</h4>
+                        <ul>
+                            <li>Comprehensive safety training programs</li>
+                            <li>Regular certification updates</li>
+                            <li>Emergency response drills</li>
+                            <li>Continuous skill development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="page-header">
+                <h1>About IOCL</h1>
+                <p>India's flagship national oil company and a Fortune 500 enterprise</p>
+            </div>
+
+            <div class="content-section">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Indian Oil Corporation Limited</h2>
+                        <p>Indian Oil Corporation Limited (IOCL) is India's largest commercial enterprise, with a sales turnover of ₹6,95,088 crore and profits of ₹26,371 crore for the fiscal year 2021-22. IOCL is the highest ranked Indian company in the Fortune Global 500 listing.</p>
+                        
+                        <p>The Corporation, together with its subsidiaries, accounts for 48.83% of India's refining capacity and 32.25% of petroleum products market share. IOCL operates 11 of India's 23 refineries with a combined refining capacity of 80.70 MMTPA.</p>
+
+                        <h3>Our Mission</h3>
+                        <p>To achieve international standards of excellence in all aspects of energy and diversified business with focus on customer delight through value creation, innovative practices and sustainable development.</p>
+
+                        <h3>Core Values</h3>
+                        <ul class="values-list">
+                            <li><i class="fas fa-check-circle"></i> Care - For people and environment</li>
+                            <li><i class="fas fa-check-circle"></i> Innovation - Constantly seeking new and better ways</li>
+                            <li><i class="fas fa-check-circle"></i> Passion - For achieving higher goals</li>
+                            <li><i class="fas fa-check-circle"></i> Trust - Building lasting relationships</li>
+                            <li><i class="fas fa-check-circle"></i> Integrity - In all our actions</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <div class="stat-icon"><i class="fas fa-industry"></i></div>
+                            <div class="stat-number">11</div>
+                            <div class="stat-label">Refineries</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon"><i class="fas fa-gas-pump"></i></div>
+                            <div class="stat-number">38,000+</div>
+                            <div class="stat-label">Fuel Stations</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-number">33,000+</div>
+                            <div class="stat-label">Employees</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon"><i class="fas fa-globe-asia"></i></div>
+                            <div class="stat-number">15,000+</div>
+                            <div class="stat-label">Kms Pipeline</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2>IOCL Guwahati Refinery – Contact Information</h2>
+                    <p><strong>Indian Oil Corporation Limited – Guwahati Refinery</strong></p>
+                    <ul class="values-list">
+                        <li><i class="fas fa-map-marker-alt"></i> IOCL Guwahati Refinery, Noonmati, Guwahati – 781020, Assam, India</li>
+                        <li><i class="fas fa-phone"></i> +91 361 255 0604</li>
+                        <li><i class="fas fa-envelope"></i> contact@indianoil.in</li>
+                        <li><i class="fas fa-globe"></i> <a href="https://www.iocl.com" target="_blank" rel="noopener noreferrer">https://www.iocl.com</a></li>
+                    </ul>
+
+                    <p>
+                        <strong>About the Refinery:</strong><br>
+                        The IOCL Guwahati Refinery is one of Indian Oil’s key refineries and the first public sector refinery in India. It plays a vital role in processing crude oil and supplying petroleum products to the northeastern states of India.
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#safety">Safety</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#" aria-label="Safety Guidelines">Safety Guidelines</a></li>
+                    <li><a href="#" aria-label="Training Materials">Training Materials</a></li>
+                    <li><a href="#" aria-label="Emergency Procedures">Emergency Procedures</a></li>
+                    <li><a href="#" aria-label="Help & Support">Help & Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> IOCL Guwahati Refinery, Noonmati, Guwahati – 781020, Assam, India</li>
+                    <li><i class="fas fa-phone"></i> +91 361 255 0604</li>
+                    <li><i class="fas fa-envelope"></i> contact@indianoil.in</li>
+                    <li><i class="fas fa-globe"></i> <a href="https://www.iocl.com" target="_blank" rel="noopener noreferrer">https://www.iocl.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/IndianOilcl" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/indianoilcl" aria-label="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/indian-oil" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/IndianOilCorpLtd" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Indian Oil Corporation Limited. All rights reserved. | <a href="#" aria-label="Privacy Policy">Privacy Policy</a> | <a href="#" aria-label="Terms of Service">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/profile.js"></script>
+    <script src="js/main_new.js"></script>
+</body>
+</html>

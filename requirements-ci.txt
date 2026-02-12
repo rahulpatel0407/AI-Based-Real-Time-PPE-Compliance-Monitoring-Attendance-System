@@ -1,0 +1,26 @@
+# CI-focused dependencies for unit tests
+# Excludes heavyweight ML packages that are not required by tests.
+
+Flask==2.3.3
+Flask-CORS==4.0.0
+Flask-WTF==1.1.1
+Werkzeug==2.3.7
+
+opencv-python==4.8.0.76
+numpy==1.24.3
+Pillow==10.0.0
+
+requests==2.31.0
+python-dotenv==1.0.0
+cryptography==42.0.8
+
+PyYAML==6.0
+tqdm==4.66.1
+pytest==7.4.4
+
+Jinja2==3.1.2
+MarkupSafe==2.1.2
+blinker==1.6.2
+click==8.1.6
+colorama==0.4.6
+itsdangerous==2.1.2
